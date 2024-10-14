@@ -1,0 +1,32 @@
+<odoo>
+    <!-- Copyright (C) 2024 Aures TIC - Almudena de La Puente <almudena@aurestic.es>
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+    <record id="view_partner_form_ou" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field
+                    name="operating_unit_ids"
+                    domain="[('user_ids', 'in', uid)]"
+                    groups="operating_unit.group_multi_operating_unit"
+                    widget="many2many_tags"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_res_partner_filter_ou" model="ir.ui.view">
+        <field name="name">res.partner.group.by.ou</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field
+                    name="operating_unit_ids"
+                    groups="operating_unit.group_multi_operating_unit"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
