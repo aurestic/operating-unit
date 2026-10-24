@@ -10,16 +10,19 @@ class MailOperatingUnitCommon(OperatingUnitCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        # Email Alias Domain
-        cls.ou_alias_domain = cls.env.ref("mail_operating_unit.ou_alias_domain")
-        cls.b2b_alias_domain = cls.env.ref("mail_operating_unit.b2b_alias_domain")
-        cls.b2c_alias_domain = cls.env.ref("mail_operating_unit.b2c_alias_domain")
+        # Email Alias Domains: created here so the tests do not depend on
+        # demo data (not loaded by default since 19.0)
+        AliasDomain = cls.env["mail.alias.domain"]
+        cls.ou_alias_domain = AliasDomain.create({"name": "test-main-ou.example.com"})
+        cls.b2b_alias_domain = AliasDomain.create({"name": "test-b2b-ou.example.com"})
+        cls.b2c_alias_domain = AliasDomain.create({"name": "test-b2c-ou.example.com"})
+        cls.ou1.alias_domain_id = cls.ou_alias_domain
         # Since operating_unit 19.0 the B2B/B2C operating units are created by
         # OperatingUnitCommon instead of demo data
         cls.b2b.alias_domain_id = cls.b2b_alias_domain
         cls.b2c.alias_domain_id = cls.b2c_alias_domain
-        cls.default_alias_domain = cls.env["mail.alias.domain"].create(
-            {"name": "default.com"}
+        cls.default_alias_domain = AliasDomain.create(
+            {"name": "test-default.example.com"}
         )
         # Company
         cls.company.write({"alias_domain_id": cls.default_alias_domain.id})
