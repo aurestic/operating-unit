@@ -1,0 +1,2 @@
+- Vincent Van Rossem \<<vincent.vanrossem@camptocamp.com>\>
+- Italo Lopes \<<italo.lopes@camptocamp.com>\>
