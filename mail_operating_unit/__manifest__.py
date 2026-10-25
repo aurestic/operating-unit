@@ -4,7 +4,7 @@
 {
     "name": "Mail Operating Unit",
     "version": "19.0.1.0.0",
-    "author": "Camptocamp, " "Odoo Community Association (OCA)",
+    "author": "Camptocamp, Odoo Community Association (OCA)",
     "license": "LGPL-3",
     "website": "https://github.com/OCA/operating-unit",
     "category": "Productivity/Discuss",
