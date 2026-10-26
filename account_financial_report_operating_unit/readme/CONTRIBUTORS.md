@@ -2,3 +2,5 @@
 - Aaron Henriquez \<<ahenriquez@forgeflow.com>\>
 - Pimolnat Suntian \<<pimolnats@ecosoft.co.th>\>
 - Tran Thanh Trai \<<traitt@trobz.com>\>
+- [Aures TIC](https://www.aurestic.es)
+  - Jordi Aura
