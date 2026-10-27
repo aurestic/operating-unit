@@ -22,3 +22,15 @@ class AgedPartnerBalanceReport(models.AbstractModel):
         if operating_unit_ids:
             domain.append(("operating_unit_id", "in", operating_unit_ids))
         return domain
+
+    @api.model
+    def _get_new_move_lines_domain(
+        self, new_ml_ids, account_ids, company_id, partner_ids, only_posted_moves
+    ):
+        domain = super()._get_new_move_lines_domain(
+            new_ml_ids, account_ids, company_id, partner_ids, only_posted_moves
+        )
+        operating_unit_ids = self.env.context.get("operating_unit_ids", [])
+        if operating_unit_ids:
+            domain.append(("operating_unit_id", "in", operating_unit_ids))
+        return domain
